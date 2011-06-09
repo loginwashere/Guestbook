@@ -7,7 +7,8 @@ class Application_Form_Guestbook extends Zend_Form
     {
         /* Form Elements & Other Definitions Here ... */
         // Set the method for the display form to POST
-        $this->setMethod('post');
+        $this->setMethod('post')
+             ->setAction('/index/sign');
 
         // Add an email element
         $this->addElement(
