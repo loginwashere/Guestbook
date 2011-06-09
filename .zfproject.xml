@@ -17,6 +17,7 @@
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
         <modelFile modelName="GuestbookMapper"/>
+        <modelFile modelName="Guestbook"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <viewsDirectory>
