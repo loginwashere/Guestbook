@@ -11,6 +11,8 @@ class IndexController extends Zend_Controller_Action
     public function indexAction()
     {
         // action body
+        $guestbook = new Application_Model_GuestbookMapper();
+        $this->view->entries = $guestbook->fetchAll();
     }
 
 
