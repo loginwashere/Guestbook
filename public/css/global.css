@@ -1,0 +1,45 @@
+@CHARSET "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+#header, #footer {
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+}
+#wrapper {
+    width: 100%;
+    background-color: #aaa;
+}
+#content {
+    min-width: 600px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ccc;
+}
+form {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 5px;
+    background-color: #aaa;
+}
+#comments {
+    list-style: none;
+}
+.comment-main {
+    background-color: #fff;
+    margin: 5px;
+    border: 1px solid black;
+}
+.comment-main p {
+    margin: 5px;
+}
+
+.comment-header {
+    background-color: #aaa;
+    border: 1px black;
+    border-style: none none solid none;
+}

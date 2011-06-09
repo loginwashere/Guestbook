@@ -1,14 +1,14 @@
 <!-- application/views/scripts/guestbook/index.phtml -->
 Guestbook Entries:
 <br />
-<dl>
+<ul id="comments">
 <?php foreach ($this->entries as $entry): ?>
-    <dt>
+    <li class="comment-main">
+    <div class="comment-header">
     <?php echo $this->escape($entry->email) ?>
-    </dt>
-    <dd>
-    <?php echo $this->escape($entry->comment) ?>
-    </dd>
+    </div>
+    <p class="comment"><?php echo $this->escape($entry->comment) ?></p>
+    </li>
     <?php endforeach ?>
-</dl>
+</ul>
 <?php echo $this->form ?>
