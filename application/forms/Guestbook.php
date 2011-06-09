@@ -38,6 +38,7 @@ class Application_Form_Guestbook extends Zend_Form
             )
         );
 
+        // Add ReCaptcha
         $recaptchaService = new Zend_Service_ReCaptcha(
             '6LcFIMUSAAAAAJqyQ_H7N496MFEdeDTQJ_iR_U8u',
             '6LcFIMUSAAAAAI5bl7APIPmzLarkf7HGJQMJkE4R'

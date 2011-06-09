@@ -1,4 +1,14 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Index</b> and script/action name <b>sign</b></p>
-</div>
+<!-- application/views/scripts/guestbook/index.phtml -->
+Guestbook Entries*:
+<br />
+<dl>
+<?php foreach ($this->entries as $entry): ?>
+    <dt>
+    <?php echo $this->escape($entry->email) ?>
+    </dt>
+    <dd>
+    <?php echo $this->escape($entry->comment) ?>
+    </dd>
+    <?php endforeach ?>
+</dl>
+<?php echo $this->form ?>
