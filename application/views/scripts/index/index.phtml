@@ -4,10 +4,12 @@ Guestbook Entries:
 <ul id="comments">
 <?php foreach ($this->entries as $entry): ?>
     <li class="comment-main">
-    <div class="comment-header">
-    <?php echo $this->escape($entry->email) ?>
-    </div>
-    <p class="comment"><?php echo $this->escape($entry->comment) ?></p>
+        <div class="comment-header">
+            <?php echo $this->escape($entry->created) ?>
+            <strong><?php echo $this->escape($entry->email) ?></strong>
+            <span class="number"><?php echo $this->escape($entry->id) ?></span>
+        </div>
+        <p class="comment"><?php echo $this->escape($entry->comment) ?></p>
     </li>
     <?php endforeach ?>
 </ul>
