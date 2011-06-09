@@ -1,1 +1,21 @@
-<?php echo $this->layout()->content; ?>
+<?php echo $this->doctype() ?>
+<html>
+<head>
+    <?php echo $this->headMeta() ?>
+    <?php echo $this->headLink() ?>
+    <?php echo $this->headTitle() ?>
+</head>
+<body>
+    <header id="header">
+        <h1><a href="/"><?php echo $this->title ?></a></h1>
+    </header>
+    <div id="wrapper">
+        <section id="content">
+            <?php echo $this->layout()->content ?>
+        </section> <!-- content -->
+    </div> <!-- wrapper -->
+    <footer>
+        <p>&copy; login.was.here <?php echo date('Y') ?></p>
+    </footer>
+</body>
+</html>
