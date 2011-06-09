@@ -38,20 +38,24 @@ class Application_Form_Guestbook extends Zend_Form
             )
         );
 
-        // Add a captcha
-        $this->addElement(
-            'captcha',
-            'captcha',
+        $recaptchaService = new Zend_Service_ReCaptcha(
+            '6LcFIMUSAAAAAJqyQ_H7N496MFEdeDTQJ_iR_U8u',
+            '6LcFIMUSAAAAAI5bl7APIPmzLarkf7HGJQMJkE4R'
+        );
+        // then set the Recaptcha adapter
+        $adapter = new Zend_Captcha_ReCaptcha();
+        $adapter->setService($recaptchaService);
+
+        // then set  the captcha element to use the ReCaptcha Adapter
+        $recaptcha = new Zend_Form_Element_Captcha(
+            'recaptcha',
             array(
-                'label'      => 'Please enter the 5 letters displayed below:',
-                'required'   => true,
-                'captcha'    => array(
-                    'captcha' => 'Figlet',
-                    'wordLen' => 5,
-                    'timeout' => 300
-                )
+                'label' => "Are you a human?",
+                'captcha' => $adapter
             )
         );
+        //Then only add the element to the form:
+        $this->addElement($recaptcha);
 
         // Add the submit button
         $this->addElement(
