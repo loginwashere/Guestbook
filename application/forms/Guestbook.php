@@ -10,6 +10,18 @@ class Application_Form_Guestbook extends Zend_Form
         $this->setMethod('post')
              ->setAction('/index/sign');
 
+        // Add an username element
+        $this->addElement(
+            'text',
+            'username',
+            array(
+                'label'      => 'Your name:',
+                'required'   => true,
+                'filters'    => array('StringTrim'),
+                'validators' => array('NotEmpty')
+            )
+        );
+
         // Add an email element
         $this->addElement(
             'text',
@@ -22,6 +34,21 @@ class Application_Form_Guestbook extends Zend_Form
             )
         );
 
+        // Add an url element
+        $this->addElement(
+            'text',
+            'url',
+            array(
+                'label'      => 'Your url:',
+                'required'   => false,
+                'filters'    => array(
+                    'StripTags',
+                    'StringTrim'
+                ),
+                'validators' => array('NotEmpty')
+            )
+        );
+
         // Add the comment element
         $this->addElement(
             'textarea',
@@ -29,6 +56,7 @@ class Application_Form_Guestbook extends Zend_Form
             array(
                 'label'      => 'Please Comment:',
                 'required'   => true,
+                'filters'    => array('StringTrim'),
                 'validators' => array(
                     array(
                         'validator' => 'StringLength',

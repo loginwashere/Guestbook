@@ -7,6 +7,8 @@ Guestbook Entries:
         <div class="comment-header">
             <?php echo $this->escape($entry->created) ?>
             <strong><?php echo $this->escape($entry->email) ?></strong>
+            <?php echo $this->escape($entry->username) ?>
+            <?php echo $this->escape($entry->url) ?>
             <span class="number"><?php echo $this->escape($entry->id) ?></span>
         </div>
         <p class="comment"><?php echo $this->escape($entry->comment) ?></p>

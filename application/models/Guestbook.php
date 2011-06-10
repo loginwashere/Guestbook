@@ -4,7 +4,9 @@ class Application_Model_Guestbook
 {
     protected $_comment;
     protected $_created;
+    protected $_url;
     protected $_email;
+    protected $_username;
     protected $_id;
 
     public function __construct(array $options = null)
@@ -86,6 +88,28 @@ class Application_Model_Guestbook
     public function getId()
     {
         return $this->_id;
+    }
+
+    public function setUsername($username)
+    {
+        $this->_username = (string) $username;
+        return $this;
+    }
+
+    public function getUsername()
+    {
+        return $this->_username;
+    }
+
+    public function setUrl($url)
+    {
+        $this->_url = (string) $url;
+        return $this;
+    }
+
+    public function getUrl()
+    {
+        return $this->_url;
     }
 
 
