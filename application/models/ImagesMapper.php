@@ -19,13 +19,13 @@ class Application_Model_ImagesMapper extends Application_Model_GeustbookMapperAb
             'commentid'      => $image->getCommentid(),
         );
 
-        if (null === ($id = $image->getId())) {
-            unset($data['id']);
+        if (null === ($iid = $image->getIid())) {
+            unset($data['iid']);
             $data = $this->recieveImage();
             $data['commentid'] = $image->getCommentid();
             $this->getDbTable()->insert($data);
         } else {
-            $this->getDbTable()->update($data, array('id = ?' => $id));
+            $this->getDbTable()->update($data, array('iid = ?' => $id));
         }
     }
 

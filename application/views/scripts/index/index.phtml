@@ -23,13 +23,16 @@
 <?php foreach ($this->paginator as $entry): ?>
     <li class="comment-main">
         <div class="comment-header">
-            <?php echo $this->escape($entry->created) ?>
-            <strong><?php echo $this->escape($entry->email) ?></strong>
-            <?php echo $this->escape($entry->username) ?>
-            <?php echo $this->escape($entry->url) ?>
-            <span class="number"><?php echo $this->escape($entry->id) ?></span>
+            <?php echo $this->escape($entry['entry']->created) ?>
+            <strong><?php echo $this->escape($entry['entry']->email) ?></strong>
+            <?php echo $this->escape($entry['entry']->username) ?>
+            <?php echo $this->escape($entry['entry']->url) ?>
+            <span class="number"><?php echo $this->escape($entry['entry']->gid) ?></span>
         </div>
-        <p class="comment"><?php echo $this->escape($entry->comment) ?></p>
+        <p class="comment">
+            <?php echo $this->escape($entry['entry']->comment) ?>
+            <img src="/images/thumbs/<?php echo $this->escape($entry['image']->filename) ?>" alt="" />
+        </p>
     </li>
     <?php endforeach ?>
 </ul>

@@ -7,7 +7,7 @@ class Application_Model_Guestbook extends Application_Model_GeustbookAbstract
     protected $_url;
     protected $_email;
     protected $_username;
-    protected $_id;
+    protected $_gid;
 
     public function setComment($text)
     {
@@ -42,15 +42,15 @@ class Application_Model_Guestbook extends Application_Model_GeustbookAbstract
         return $this->_created;
     }
 
-    public function setId($id)
+    public function setGid($gid)
     {
-        $this->_id = (int) $id;
+        $this->_gid = (int) $gid;
         return $this;
     }
 
-    public function getId()
+    public function getGid()
     {
-        return $this->_id;
+        return $this->_gid;
     }
 
     public function setUsername($username)

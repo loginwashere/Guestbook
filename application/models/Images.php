@@ -2,7 +2,7 @@
 
 class Application_Model_Images extends Application_Model_GeustbookAbstract
 {
-    protected $_id;
+    protected $_iid;
     protected $_filename;
     protected $_width;
     protected $_height;
@@ -10,15 +10,15 @@ class Application_Model_Images extends Application_Model_GeustbookAbstract
     protected $_resizedheight;
     protected $_commentid;
 
-    public function setId($id)
+    public function setIid($iid)
     {
-        $this->_id = (int) $id;
+        $this->_iid = (int) $iid;
         return $this;
     }
 
-    public function getId()
+    public function getIid()
     {
-        return $this->_id;
+        return $this->_iid;
     }
 
     public function setFilename($filename)
