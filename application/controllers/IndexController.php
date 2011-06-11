@@ -14,10 +14,15 @@ class IndexController extends Zend_Controller_Action
         $sort = $this->_getParam('sort');
         if (!empty($sort)) {
             list($field, $order) = explode('_', $sort);
+<<<<<<< HEAD
             $this->view->entries = $this->_guestbook->fetchAll($field, $order);
         } else {
             $this->view->entries = $this->_guestbook->fetchAll();
         }
+=======
+        }
+        $this->view->entries = $this->_guestbook->fetchAll($field, $order);
+>>>>>>> faa77a351264518eb71dd051f89bd27a4765a962
         $this->_form = new Application_Form_Guestbook();
     }
 
