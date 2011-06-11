@@ -1,7 +1,7 @@
 <!-- application/views/scripts/guestbook/index.phtml -->
-<p>Sort Entries:</p>
 <form action="" method="post">
     <select name="sort" id="sort">
+        <option selected disabled value="">Sort entries by</option>
         <optgroup label="Username">
             <option value="username_asc">Username ASC</option>
             <option value="username_desc">Username DESC</option>
@@ -12,12 +12,12 @@
         </optgroup>
         <optgroup label="Date">
             <option value="created_asc">Date ASC</option>
-            <option selected value="created_desc">Date DESC</option>
+            <option value="created_desc">Date DESC</option>
         </optgroup>
     </select>
     <input type="submit" name="go" value="Sort"/>
 </form>
-<p>Guestbook Entries:</p>
+<p>Guestbook entries:</p>
 <br />
 <ul id="comments">
 <?php foreach ($this->paginator as $entry): ?>
