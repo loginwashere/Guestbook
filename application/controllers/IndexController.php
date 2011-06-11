@@ -9,7 +9,13 @@ class IndexController extends Zend_Controller_Action
     {
         /* Initialize action controller here */
         $this->_guestbook = new Application_Model_GuestbookMapper();
-        $this->view->entries = $this->_guestbook->fetchAll();
+        $field = $this->_getParam('field');
+        $order = $this->_getParam('order');
+        $sort = $this->_getParam('sort');
+        if (!empty($sort)) {
+            list($field, $order) = explode('_', $sort);
+        }
+        $this->view->entries = $this->_guestbook->fetchAll($field, $order);
         $this->_form = new Application_Form_Guestbook();
     }
 

@@ -59,8 +59,9 @@ class Application_Model_GuestbookMapper
 
     public function fetchAll($field = 'created', $order = 'desc')
     {
+        $param = trim("$field $order");
         $table = $this->getDbTable();
-        $resultSet = $table->fetchAll($table->select()->order($field, $order));
+        $resultSet = $table->fetchAll($table->select()->order($param));
         $entries   = array();
         foreach ($resultSet as $row) {
             $entry = new Application_Model_Guestbook();
