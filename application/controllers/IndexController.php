@@ -14,10 +14,21 @@ class IndexController extends Zend_Controller_Action
         $sort = $this->_getParam('sort');
         if (!empty($sort)) {
             list($field, $order) = explode('_', $sort);
-            $this->view->entries = $this->_guestbook->fetchAll($field, $order);
+            //$this->view->entries = $this->_guestbook->fetchAll($field, $order);
+                        // Get all posts and give them to paginator
+            $paginator = Zend_Paginator::factory(
+                $this->_guestbook->fetchAll($field, $order)
+            );
         } else {
-            $this->view->entries = $this->_guestbook->fetchAll();
+            //$this->view->entries = $this->_guestbook->fetchAll();
+            // Get all posts and give them to paginator
+            $paginator = Zend_Paginator::factory(
+                $this->_guestbook->fetchAll()
+            );
         }
+        $paginator->setItemCountPerPage(5);
+        $paginator->setCurrentPageNumber($this->_getParam('page'));
+        $this->view->paginator = $paginator;
         $this->_form = new Application_Form_Guestbook();
     }
 

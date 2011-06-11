@@ -20,7 +20,7 @@
 <p>Guestbook Entries:</p>
 <br />
 <ul id="comments">
-<?php foreach ($this->entries as $entry): ?>
+<?php foreach ($this->paginator as $entry): ?>
     <li class="comment-main">
         <div class="comment-header">
             <?php echo $this->escape($entry->created) ?>
@@ -33,4 +33,9 @@
     </li>
     <?php endforeach ?>
 </ul>
+<?php echo $this->paginationControl(
+    $this->paginator,
+    'Sliding',
+    'index_pagination.phtml'
+);?>
 <?php echo $this->form ?>
