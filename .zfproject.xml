@@ -23,7 +23,12 @@
         <modelFile modelName="Guestbook"/>
         <dbTableDirectory>
           <dbTableFile dbTableName="Guestbook"/>
+          <dbTableFile dbTableName="Images"/>
         </dbTableDirectory>
+        <modelFile modelName="Images"/>
+        <modelFile modelName="ImagesMapper"/>
+        <modelFile modelName="GeustbookAbstract"/>
+        <modelFile modelName="GeustbookMapperAbstract"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <viewsDirectory>
