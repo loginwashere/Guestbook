@@ -66,6 +66,28 @@ class Application_Form_Guestbook extends Zend_Form
             )
         );
 
+        // Image upload
+        // Add a image uploading field
+        $image = new Zend_Form_Element_File('image');
+        $image->setLabel('Upload an image:')
+              ->setRequired(false)
+              ->addValidator('IsImage', false)
+              ->addValidator('Count', false, 1)
+              ->addValidator('Size', false, 1024000)
+              ->addValidator('Extension', false, 'jpeg,jpg,png,gif')
+              ->addValidator(
+                  'ImageSize',
+                  false,
+                  array(
+                     'minwidth'  => 10,
+                     'maxwidth'  => 4000,
+                     'minheight' => 10,
+                     'maxheight' => 3000
+                  )
+              )
+              ->addFilter('Rename', '../public/images/');
+        $this->addElement($image);
+
         // Add ReCaptcha
         $recaptchaService = new Zend_Service_ReCaptcha(
             '6LcFIMUSAAAAAJqyQ_H7N496MFEdeDTQJ_iR_U8u',
