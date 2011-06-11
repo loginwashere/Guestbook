@@ -3,6 +3,7 @@
 class Application_Model_GeustbookMapperAbstract
 {
     protected $_dbTable;
+    protected $_dbTableClass;
 
     public function setDbTable($dbTable)
     {
@@ -19,7 +20,7 @@ class Application_Model_GeustbookMapperAbstract
     public function getDbTable()
     {
         if (null === $this->_dbTable) {
-            $this->setDbTable('Application_Model_DbTable_Guestbook');
+            $this->setDbTable($this->_dbTableClass);
         }
         return $this->_dbTable;
     }

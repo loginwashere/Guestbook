@@ -2,6 +2,8 @@
 
 class Application_Model_GuestbookMapper extends Application_Model_GeustbookMapperAbstract
 {
+    protected $_dbTableClass = 'Application_Model_DbTable_Guestbook';
+
     public function save(Application_Model_Guestbook $guestbook)
     {
         $data = array(
@@ -14,9 +16,9 @@ class Application_Model_GuestbookMapper extends Application_Model_GeustbookMappe
 
         if (null === ($id = $guestbook->getId())) {
             unset($data['id']);
-            $this->getDbTable()->insert($data);
+            return $this->getDbTable()->insert($data);
         } else {
-            $this->getDbTable()->update($data, array('id = ?' => $id));
+            return $this->getDbTable()->update($data, array('id = ?' => $id));
         }
     }
 

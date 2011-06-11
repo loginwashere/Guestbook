@@ -44,10 +44,21 @@ class IndexController extends Zend_Controller_Action
         if ($this->getRequest()->isPost()) {
             $request = $this->getRequest()->getPost();
             if ($this->_form->isValid($request)) {
-                $comment = new Application_Model_Guestbook($this->_form->getValues());
-                $mapper  = new Application_Model_GuestbookMapper();
-                $mapper->save($comment);
-                $this->_helper->redirector('index', 'index');
+                if ($this->_form->image->isUploaded()) {
+
+                    $commentData['username'] = $this->_form->getValue('username');
+                    $commentData['email']    = $this->_form->getValue('email');
+                    $commentData['url']      = $this->_form->getValue('url');
+                    $commentData['comment']  = $this->_form->getValue('comment');
+                    //$commentData[''] = $this->_form->getValue('');
+                    $comment = new Application_Model_Guestbook($commentData);
+
+                    $imageData['commentid'] = $this->_guestbook->save($comment);
+                    $image = new Application_Model_Images($imageData);
+                    $imageMapper = new Application_Model_ImagesMapper();
+                    $imageMapper->save($image);
+                    $this->_helper->redirector('index', 'index');
+                }
             } else {
                 $this->_form->populate($request);
             }

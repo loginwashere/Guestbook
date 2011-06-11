@@ -8,6 +8,7 @@ class Application_Model_Images extends Application_Model_GeustbookAbstract
     protected $_height;
     protected $_resizedwidth;
     protected $_resizedheight;
+    protected $_commentid;
 
     public function setId($id)
     {
@@ -73,6 +74,17 @@ class Application_Model_Images extends Application_Model_GeustbookAbstract
     public function getResizedheight()
     {
         return $this->_resizedheight;
+    }
+
+    public function setCommentid($commentid)
+    {
+        $this->_commentid = (int) $commentid;
+        return $this;
+    }
+
+    public function getCommentid()
+    {
+        return $this->_commentid;
     }
 }
 
