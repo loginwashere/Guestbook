@@ -1,5 +1,23 @@
 <!-- application/views/scripts/guestbook/index.phtml -->
-Guestbook Entries:
+<p>Sort Entries:</p>
+<form action="" method="post">
+    <select name="sort" id="sort">
+        <optgroup label="Username">
+            <option value="username_asc">Username ASC</option>
+            <option value="username_desc">Username DESC</option>
+        </optgroup>
+        <optgroup label="Email">
+            <option value="email_asc">Email ASC</option>
+            <option value="email_desc">Email DESC</option>
+        </optgroup>
+        <optgroup label="Date">
+            <option value="created_asc">Date ASC</option>
+            <option selected value="created_desc">Date DESC</option>
+        </optgroup>
+    </select>
+    <input type="submit" name="go" value="Sort"/>
+</form>
+<p>Guestbook Entries:</p>
 <br />
 <ul id="comments">
 <?php foreach ($this->entries as $entry): ?>
