@@ -31,7 +31,9 @@
         </div>
         <p class="comment">
             <?php echo $this->escape($entry['entry']->comment) ?>
-            <img src="/images/thumbs/<?php echo $this->escape($entry['image']->filename) ?>" alt="" />
+            <?php if ('' !== $entry['image']->filename): ?>
+                <img src="/images/thumbs/<?php echo $this->escape($entry['image']->filename) ?>" alt="" />
+            <?php endif;?>
         </p>
     </li>
     <?php endforeach ?>
