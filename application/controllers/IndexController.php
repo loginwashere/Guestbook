@@ -11,7 +11,7 @@ class IndexController extends Zend_Controller_Action
         // Set max pages per page in guestbook
         $this->_maxPagesPerPage = Zend_Registry::get('config')->guestbook
                                                               ->global
-                                                              ->_maxPagesPerPage;
+                                                              ->maxpagesperpage;
         /* Initialize action controller here */
         $this->_guestbook = new Application_Model_GuestbookMapper();
         $field = $this->_getParam('field');
