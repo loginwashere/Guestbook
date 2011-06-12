@@ -71,7 +71,7 @@ class Application_Form_Guestbook extends Zend_Form
         $image = new Zend_Form_Element_File('image');
         $image->setLabel('Upload an image:')
               ->setRequired(false)
-              ->addValidator('IsImage', false)
+              /*->addValidator('IsImage', false)*/
               ->addValidator('Count', false, 1)
               ->addValidator('Size', false, 1024000)
               ->addValidator('Extension', false, 'jpeg,jpg,png,gif')
