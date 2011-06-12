@@ -1,5 +1,5 @@
 <!-- application/views/scripts/guestbook/index.phtml -->
-<form action="" method="post">
+<form action="">
     <select name="sort" id="sort">
         <option selected disabled value="">Sort entries by</option>
         <optgroup label="Username">
@@ -30,7 +30,8 @@
             <span class="number"><?php echo $this->escape($entry['entry']->gid) ?></span>
         </div>
         <?php if ('' !== $entry['image']->filename): ?>
-            <a href="/images/<?php echo $this->escape($entry['image']->filename) ?>">
+            <a href="/images/<?php echo $this->escape($entry['image']->filename) ?>"
+                rel="lightbox">
             <img class="image"
                 src="/images/thumbs/<?php echo $this->escape($entry['image']->filename) ?>"
                 alt="<?php echo $this->escape($entry['image']->filename) ?>"
