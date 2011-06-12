@@ -87,7 +87,7 @@ class Application_Form_Guestbook extends Zend_Form
               )
               ->addFilter('Rename', '../public/images/');
         $this->addElement($image);
-/*
+
         // Add ReCaptcha
         $recaptchaService = new Zend_Service_ReCaptcha(
             '6LcFIMUSAAAAAJqyQ_H7N496MFEdeDTQJ_iR_U8u',
@@ -107,7 +107,7 @@ class Application_Form_Guestbook extends Zend_Form
         );
         //Then only add the element to the form:
         $this->addElement($recaptcha);
-*/
+
         // Add the submit button
         $this->addElement(
             'submit',
