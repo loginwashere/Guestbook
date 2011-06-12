@@ -60,7 +60,7 @@ class Application_Form_Guestbook extends Zend_Form
                 'validators' => array(
                     array(
                         'validator' => 'StringLength',
-                        'options' => array(0, 20)
+                        'options' => array(0, 200)
                     )
                 )
             )

@@ -49,20 +49,22 @@ class Application_Model_GuestbookMapper extends Application_Model_GeustbookMappe
         $entries   = array();
         foreach ($resultSet as $row) {
             $entry = new Application_Model_Guestbook();
-            $image = new Application_Model_Images();
-            $image->setIid($row->iid)
-                  ->setFilename($row->filename)
-                  ->setWidth($row->width)
-                  ->setHeght($row->height)
-                  ->setResizedwidth($row->resizedwidth)
-                  ->setResizedheight($row->resizedheight);
+            if ('' !== $row->iid) {
+                $image = new Application_Model_Images();
+                $image->setIid($row->iid)
+                      ->setFilename($row->filename)
+                      ->setWidth($row->width)
+                      ->setHeght($row->height)
+                      ->setResizedwidth($row->resizedwidth)
+                      ->setResizedheight($row->resizedheight);
+                $comment['image'] = $image;
+            }
             $entry->setGid($row->gid)
                   ->setUsername($row->username)
                   ->setEmail($row->email)
                   ->setUrl($row->url)
                   ->setComment($row->comment)
                   ->setCreated($row->created);
-            $comment['image'] = $image;
             $comment['entry'] = $entry;
             $entries[] = $comment;
         }
