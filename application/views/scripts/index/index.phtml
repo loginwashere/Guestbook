@@ -29,16 +29,17 @@
             <?php echo $this->escape($entry['entry']->url) ?>
             <span class="number"><?php echo $this->escape($entry['entry']->gid) ?></span>
         </div>
+        <?php if ('' !== $entry['image']->filename): ?>
+            <a href="/images/<?php echo $this->escape($entry['image']->filename) ?>">
+            <img class="image"
+                src="/images/thumbs/<?php echo $this->escape($entry['image']->filename) ?>"
+                alt="<?php echo $this->escape($entry['image']->filename) ?>"
+                width="<?php echo $this->escape($entry['image']->resizedwidth) ?>"
+                height="<?php echo $this->escape($entry['image']->resizedheight) ?>"
+            /></a>
+        <?php endif;?>
         <p class="comment">
             <?php echo $this->escape($entry['entry']->comment) ?>
-            <?php if ('' !== $entry['image']->filename): ?>
-                <img class="image"
-                    src="/images/thumbs/<?php echo $this->escape($entry['image']->filename) ?>"
-                    alt="<?php echo $this->escape($entry['image']->filename) ?>"
-                    width="<?php echo $this->escape($entry['image']->resizedwidth) ?>"
-                    height="<?php echo $this->escape($entry['image']->resizedheight) ?>"
-                />
-            <?php endif;?>
         </p>
     </li>
     <?php endforeach ?>

@@ -36,9 +36,11 @@ form {
     background-color: #fff;
     margin: 5px;
     border: 1px solid black;
+    overflow: hidden;
 }
-.comment-main p {
+p.comment {
     margin: 5px;
+    float: left;
 }
 
 .comment-header {
@@ -49,4 +51,7 @@ form {
 .number {
     float: right;
     margin: 0 5px;
+}
+.image {
+    float: left;
 }
