@@ -16,6 +16,7 @@
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Guestbook"/>
+        <formFile formName="Order"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>

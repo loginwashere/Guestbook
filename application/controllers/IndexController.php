@@ -30,6 +30,7 @@ class IndexController extends Zend_Controller_Action
         $paginator->setCurrentPageNumber($this->_getParam('page'));
         $this->view->paginator = $paginator;
         $this->_form = new Application_Form_Guestbook();
+        $this->view->orderForm = new Application_Form_Order();
     }
 
     public function indexAction()
