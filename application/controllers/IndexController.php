@@ -4,14 +4,14 @@ class IndexController extends Zend_Controller_Action
 {
     private $_form;
     private $_guestbook;
-    private $_maxPagesPerPage;
+    private $_maxCommentssPerPage;
 
     public function init()
     {
         // Set max pages per page in guestbook
-        $this->_maxPagesPerPage = Zend_Registry::get('config')->guestbook
+        $this->_maxCommentsPerPage = Zend_Registry::get('config')->guestbook
                                                               ->global
-                                                              ->maxpagesperpage;
+                                                              ->maxcommentsperpage;
         /* Initialize action controller here */
         $this->_guestbook = new Application_Model_GuestbookMapper();
         $field = $this->_getParam('field');
@@ -31,7 +31,7 @@ class IndexController extends Zend_Controller_Action
                 $this->_guestbook->fetchAll()
             );
         }
-        $paginator->setItemCountPerPage($this->_maxPagesPerPage);
+        $paginator->setItemCountPerPage($this->_maxCommentsPerPage);
         $paginator->setCurrentPageNumber($this->_getParam('page'));
         $this->view->paginator = $paginator;
         $this->_form = new Application_Form_Guestbook();
