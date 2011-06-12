@@ -23,7 +23,10 @@ class Application_Form_Order extends Zend_Form
             array(
                 'required' => 'true',
                 'value' => 'created_desc',
-                'multiOptions' => $interestArray
+                'multiOptions' => $interestArray,
+                'decorators' => array(
+                    'ViewHelper',
+                ),
             )
         );
         $this->addElement($firstInterest);
@@ -35,6 +38,28 @@ class Application_Form_Order extends Zend_Form
             array(
                 'ignore'   => true,
                 'label'    => 'Sort',
+                'decorators' => array(
+                    'ViewHelper',
+                ),
+            )
+        );
+        $this->addDisplayGroup(
+            array(
+                'sort',
+                'orderSubmit',
+            ),
+            'submitButtons',
+            array(
+                'decorators' => array(
+                    'FormElements',
+                    array(
+                        'HtmlTag',
+                        array(
+                            'tag' => 'div',
+                            'class' => 'element'
+                        )
+                    ),
+                ),
             )
         );
 
