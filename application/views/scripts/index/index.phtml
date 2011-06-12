@@ -32,7 +32,12 @@
         <p class="comment">
             <?php echo $this->escape($entry['entry']->comment) ?>
             <?php if ('' !== $entry['image']->filename): ?>
-                <img src="/images/thumbs/<?php echo $this->escape($entry['image']->filename) ?>" alt="" />
+                <img class="image"
+                    src="/images/thumbs/<?php echo $this->escape($entry['image']->filename) ?>"
+                    alt="<?php echo $this->escape($entry['image']->filename) ?>"
+                    width="<?php echo $this->escape($entry['image']->resizedwidth) ?>"
+                    height="<?php echo $this->escape($entry['image']->resizedheight) ?>"
+                />
             <?php endif;?>
         </p>
     </li>
