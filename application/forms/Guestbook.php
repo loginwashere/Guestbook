@@ -49,6 +49,80 @@ class Application_Form_Guestbook extends Zend_Form
             )
         );
 
+        $this->addElement(
+            'button',
+            'link',
+            array(
+                'label' => '[link]',
+                'decorators' => array(
+                    'ViewHelper',
+                ),
+            )
+        );
+        $this->addElement(
+            'button',
+            'code',
+            array(
+                'label' => '[code]',
+                'decorators' => array(
+                    'ViewHelper',
+                ),
+            )
+        );
+        $this->addElement(
+            'button',
+            'italic',
+            array(
+                'label' => '[italic]',
+                'decorators' => array(
+                    'ViewHelper',
+                ),
+            )
+        );
+        $this->addElement(
+            'button',
+            'strike',
+            array(
+                'label' => '[strike]',
+                'decorators' => array(
+                    'ViewHelper',
+                ),
+            )
+        );
+        $this->addElement(
+            'button',
+            'strong',
+            array(
+                'label' => '[strong]',
+                'decorators' => array(
+                    'ViewHelper',
+                ),
+            )
+        );
+
+        $this->addDisplayGroup(
+            array(
+                'link',
+                'code',
+                'italic',
+                'strike',
+                'strong',
+            ),
+            'submitButtons',
+            array(
+                'decorators' => array(
+                    'FormElements',
+                    array(
+                        'HtmlTag',
+                        array(
+                            'tag' => 'div',
+                            'class' => 'element'
+                        )
+                    ),
+                ),
+            )
+        );
+
         // Add the comment element
         $this->addElement(
             'textarea',
