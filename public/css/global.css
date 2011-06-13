@@ -16,6 +16,13 @@ body {
     padding: 10px;
     text-align: center;
 }
+#header a, #footer a {
+    color: #FFFFDD;
+}
+#header a:hover, #footer a:hover {
+    text-decoration: none;
+    color: #aaa;
+}
 
 #wrapper {
     width: 100%;
@@ -41,7 +48,7 @@ form {
     margin: 5px;
     background: none repeat scroll 0 0 #FFFFDD;
     border: 1px solid #FFFFDD;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 8px rgba(255, 255, 255, 0.5);
     overflow: hidden;
 }
 
@@ -56,6 +63,7 @@ p.comment-text {
     color: #FFFFDD;
     border: 1px black;
     border-style: none none solid none;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }
 
 .number {
@@ -80,8 +88,9 @@ p.comment-text {
 
 .paginationControl a {
     text-decoration: none;
-    border: 1px solid #fff;
-    background: #aaa;
+    border: 1px solid #FFFFDD;
+    background: #000;
+    color: #FFFFDD;
     padding: 0 5px;
 }
 
@@ -91,8 +100,9 @@ p.comment-text {
 }
 
 span#current {
-    background: #fff;
-    color: #204a87;
-    border: 1px solid #fff;
+    background: #FFFFDD;
+    color: #000;
+    border: 2px solid #FFFFDD;
     padding: 0 5px;
+    border-radius: 10px;
 }
