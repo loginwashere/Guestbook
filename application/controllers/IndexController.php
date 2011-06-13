@@ -8,6 +8,8 @@ class IndexController extends Zend_Controller_Action
 
     public function init()
     {
+        $this->_helper->ajaxContext->addActionContext('index', 'html')
+                                   ->initContext();
         // Set max pages per page in guestbook
         $this->_maxCommentsPerPage = Zend_Registry::get('config')->guestbook
                                                               ->global
@@ -19,13 +21,11 @@ class IndexController extends Zend_Controller_Action
         $sort = $this->_getParam('sort');
         if (!empty($sort)) {
             list($field, $order) = explode('_', $sort);
-            //$this->view->entries = $this->_guestbook->fetchAll($field, $order);
-                        // Get all posts and give them to paginator
+            // Get all posts and give them to paginator
             $paginator = Zend_Paginator::factory(
                 $this->_guestbook->fetchAll($field, $order)
             );
         } else {
-            //$this->view->entries = $this->_guestbook->fetchAll();
             // Get all posts and give them to paginator
             $paginator = Zend_Paginator::factory(
                 $this->_guestbook->fetchAll()
@@ -47,28 +47,55 @@ class IndexController extends Zend_Controller_Action
     public function signAction()
     {
         // action body
-        if ($this->getRequest()->isPost()) {
-            $request = $this->getRequest()->getPost();
-            if ($this->_form->isValid($request)) {
-                $commentData['username'] = $this->_form->getValue('username');
-                $commentData['email']    = $this->_form->getValue('email');
-                $commentData['url']      = $this->_form->getValue('url');
-                $bbcode = Zend_Markup::factory('Bbcode', 'Html');
-                $commentData['comment']  = $bbcode->render($this->_form->getValue('comment'));
-                $comment = new Application_Model_Guestbook($commentData);
-                $imageData['commentid'] = $this->_guestbook->save($comment);
+        if ($this->_request->isXmlHttpRequest()) {
+            if ($this->getRequest()->isPost()) {
+                $request = $this->getRequest()->getPost();
+                if ($this->_form->isValid($request)) {
+                    $commentData['username'] = $this->_form->getValue('username');
+                    $commentData['email']    = $this->_form->getValue('email');
+                    $commentData['url']      = $this->_form->getValue('url');
+                    $bbcode = Zend_Markup::factory('Bbcode', 'Html');
+                    $commentData['comment']  = $bbcode->render($this->_form->getValue('comment'));
+                    $comment = new Application_Model_Guestbook($commentData);
+                    $imageData['commentid'] = $this->_guestbook->save($comment);
 
-                if ($this->_form->image->isUploaded()) {
-                    $image = new Application_Model_Images($imageData);
-                    $imageMapper = new Application_Model_ImagesMapper();
-                    $imageMapper->save($image);
+                    if ($this->_form->image->isUploaded()) {
+                        $image = new Application_Model_Images($imageData);
+                        $imageMapper = new Application_Model_ImagesMapper();
+                        $imageMapper->save($image);
+                    }
+                    $jsonData = Zend_Json::encode($myArray);
+                    //Send the result back to the client
+                    $this->response->appendBody($jsonData);
+                } else {
+                    $result = array('status'=>'error', 'data' => $this->_form->getErrors());
+                    $this->_json($result);
                 }
-                $this->_helper->redirector('index', 'index');
-            } else {
-                $this->_form->populate($request);
             }
-            $this->view->form = $this->_form;
-            $this->render('index');
+        } else {
+            if ($this->getRequest()->isPost()) {
+                $request = $this->getRequest()->getPost();
+                if ($this->_form->isValid($request)) {
+                    $commentData['username'] = $this->_form->getValue('username');
+                    $commentData['email']    = $this->_form->getValue('email');
+                    $commentData['url']      = $this->_form->getValue('url');
+                    $bbcode = Zend_Markup::factory('Bbcode', 'Html');
+                    $commentData['comment']  = $bbcode->render($this->_form->getValue('comment'));
+                    $comment = new Application_Model_Guestbook($commentData);
+                    $imageData['commentid'] = $this->_guestbook->save($comment);
+
+                    if ($this->_form->image->isUploaded()) {
+                        $image = new Application_Model_Images($imageData);
+                        $imageMapper = new Application_Model_ImagesMapper();
+                        $imageMapper->save($image);
+                    }
+                    $this->_helper->redirector('index', 'index');
+                } else {
+                    $this->_form->populate($request);
+                }
+                $this->view->form = $this->_form;
+                $this->render('index');
+            }
         }
     }
 

@@ -33,7 +33,11 @@ body {
     max-width: 900px;
     margin: 0 auto;
 }
-
+.paged-data {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
 form {
     max-width: 700px;
     margin: 0 auto;
@@ -105,4 +109,24 @@ span#current {
     border: 2px solid #FFFFDD;
     padding: 0 5px;
     border-radius: 10px;
+}
+/*
+ *
+ *
+ */
+.loading {
+    background-image: url(../img/ajax-loader.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    opacity: .8;
 }

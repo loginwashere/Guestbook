@@ -1,36 +1,10 @@
 <!-- application/views/scripts/guestbook/index.phtml -->
+<?php $this->inlineScript()->appendFile('js/paginator.js') ?>
 <h1>Guestbook entries:</h1>
-<br />
-<ul id="comments">
-<?php foreach ($this->paginator as $entry): ?>
-    <li class="comment-main">
-        <div class="comment-header">
-            <?php echo $this->escape($entry['entry']->created) ?>
-            <strong><?php echo $this->escape($entry['entry']->email) ?></strong>
-            <?php echo $this->escape($entry['entry']->username) ?>
-            <?php echo $this->escape($entry['entry']->url) ?>
-            <span class="number">№<?php echo $this->escape($entry['entry']->gid) ?></span>
-        </div>
-        <?php if ('' !== $entry['image']->filename): ?>
-            <a href="/images/<?php echo $this->escape($entry['image']->filename) ?>"
-                rel="lightbox">
-            <img class="image"
-                src="/images/thumbs/<?php echo $this->escape($entry['image']->filename) ?>"
-                alt="<?php echo $this->escape($entry['image']->filename) ?>"
-                width="<?php echo $this->escape($entry['image']->resizedwidth) ?>"
-                height="<?php echo $this->escape($entry['image']->resizedheight) ?>"
-            /></a>
-        <?php endif;?>
-        <p class="comment-text">
-            <?php echo $entry['entry']->comment ?>
-        </p>
-    </li>
-    <?php endforeach ?>
-</ul>
-<?php echo $this->paginationControl(
-    $this->paginator,
-    'Sliding',
-    'index_pagination.phtml'
-);?>
+
+<div id="paged-data-container">
+    <?php echo $this->render('index/index.ajax.phtml') ?>
+</div>
+
 <?php echo $this->orderForm ?>
 <?php echo $this->form ?>
