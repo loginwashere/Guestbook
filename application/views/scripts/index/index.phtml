@@ -1,6 +1,5 @@
 <!-- application/views/scripts/guestbook/index.phtml -->
-<?php echo $this->orderForm ?>
-<p>Guestbook entries:</p>
+<h1>Guestbook entries:</h1>
 <br />
 <ul id="comments">
 <?php foreach ($this->paginator as $entry): ?>
@@ -10,7 +9,7 @@
             <strong><?php echo $this->escape($entry['entry']->email) ?></strong>
             <?php echo $this->escape($entry['entry']->username) ?>
             <?php echo $this->escape($entry['entry']->url) ?>
-            <span class="number"><?php echo $this->escape($entry['entry']->gid) ?></span>
+            <span class="number">№<?php echo $this->escape($entry['entry']->gid) ?></span>
         </div>
         <?php if ('' !== $entry['image']->filename): ?>
             <a href="/images/<?php echo $this->escape($entry['image']->filename) ?>"
@@ -33,4 +32,5 @@
     'Sliding',
     'index_pagination.phtml'
 );?>
+<?php echo $this->orderForm ?>
 <?php echo $this->form ?>
