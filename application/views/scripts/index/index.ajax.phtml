@@ -26,9 +26,9 @@
                 height="<?php echo $this->escape($entry['image']->resizedheight) ?>"
             /></a>
         <?php endif;?>
-        <p class="comment-text">
+        <div class="comment-text">
             <?php echo $entry['entry']->comment ?>
-        </p>
+        </div>
     </li>
     <?php endforeach ?>
 </ul>

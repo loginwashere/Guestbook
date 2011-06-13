@@ -12,7 +12,7 @@ See http://developer.yahoo.com/ypatterns/pattern.php?pattern=searchpagination
 <?php if ($page != $this->current): ?>
 <a href="<?php echo $this->url(array('page' => $page)/*, 'index'*/); ?>"><?php echo $page; ?></a>
 <?php else: ?>
-<span id="current"><?php echo $page; ?></span>
+<span class="current"><?php echo $page; ?></span>
 <?php endif; ?>
 <?php endforeach; ?>
 <!-- Next page link -->

@@ -56,7 +56,7 @@ form {
     overflow: hidden;
 }
 
-p.comment-text {
+div.comment-text {
     margin: 5px;
     float: left;
     color: #000;
@@ -103,7 +103,7 @@ p.comment-text {
     color: #000;
 }
 
-span#current {
+.paginationControl span.current {
     background: #FFFFDD;
     color: #000;
     border: 2px solid #FFFFDD;
@@ -111,7 +111,7 @@ span#current {
     border-radius: 10px;
 }
 /*
- *
+ * AJAX load
  *
  */
 .loading {
