@@ -49,6 +49,7 @@ class Application_Form_Guestbook extends Zend_Form
             )
         );
 
+        // Add [link] button element
         $this->addElement(
             'button',
             'link',
@@ -59,6 +60,7 @@ class Application_Form_Guestbook extends Zend_Form
                 ),
             )
         );
+        // Add [code] button element
         $this->addElement(
             'button',
             'code',
@@ -69,6 +71,7 @@ class Application_Form_Guestbook extends Zend_Form
                 ),
             )
         );
+        // Add [italic] button element
         $this->addElement(
             'button',
             'italic',
@@ -79,6 +82,7 @@ class Application_Form_Guestbook extends Zend_Form
                 ),
             )
         );
+        // Add [strike] button element
         $this->addElement(
             'button',
             'strike',
@@ -89,6 +93,7 @@ class Application_Form_Guestbook extends Zend_Form
                 ),
             )
         );
+        // Add [strong] button element
         $this->addElement(
             'button',
             'strong',
@@ -99,7 +104,7 @@ class Application_Form_Guestbook extends Zend_Form
                 ),
             )
         );
-
+        // Add all buttons to group to display them in one row
         $this->addDisplayGroup(
             array(
                 'link',
