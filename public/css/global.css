@@ -47,7 +47,7 @@ form {
     overflow: hidden;
 }
 
-p.comment {
+p.comment-text {
     margin: 5px;
     float: left;
 }
@@ -65,6 +65,10 @@ p.comment {
 
 .image {
     float: left;
+}
+.required:before {
+    content: "*";
+    color: #f00;
 }
 /**
  * Pagination

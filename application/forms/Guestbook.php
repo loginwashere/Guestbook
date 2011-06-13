@@ -8,7 +8,8 @@ class Application_Form_Guestbook extends Zend_Form
         /* Form Elements & Other Definitions Here ... */
         // Set the method for the display form to POST
         $this->setMethod('post')
-             ->setAction('/index/sign');
+             ->setAction('/index/sign')
+             ->setEnctype(Zend_Form::ENCTYPE_MULTIPART);
 
         // Add an username element
         $this->addElement(
@@ -16,6 +17,7 @@ class Application_Form_Guestbook extends Zend_Form
             'username',
             array(
                 'label'      => 'Your name:',
+                'class'      => 'required',
                 'required'   => true,
                 'filters'    => array('StringTrim'),
                 'validators' => array('NotEmpty')
@@ -28,6 +30,7 @@ class Application_Form_Guestbook extends Zend_Form
             'email',
             array(
                 'label'      => 'Your email address:',
+                'class'      => 'required',
                 'required'   => true,
                 'filters'    => array('StringTrim'),
                 'validators' => array('EmailAddress')
@@ -135,6 +138,7 @@ class Application_Form_Guestbook extends Zend_Form
             array(
                 'label'      => 'Please Comment:',
                 'required'   => true,
+                'class'      => 'required',
                 'filters'    => array('StringTrim'),
                 'validators' => array(
                     array(
@@ -204,7 +208,5 @@ class Application_Form_Guestbook extends Zend_Form
             array('ignore' => true)
         );
     }
-
-
 }
 
