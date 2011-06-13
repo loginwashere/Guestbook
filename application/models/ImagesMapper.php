@@ -6,7 +6,7 @@ class Application_Model_ImagesMapper extends Application_Model_GeustbookMapperAb
 
     protected $_imagePath = '../public/images/';
     protected $_thumbPath = '../public/images/thumbs/';
-    protected $_thumbSize = 200;
+    protected $_thumbSize = array(320, 240);
 
     public function save(Application_Model_Images $image)
     {
@@ -101,13 +101,13 @@ class Application_Model_ImagesMapper extends Application_Model_GeustbookMapperAb
         $imageExtention = '';
         list($width, $height) = getimagesize($imageName);
         if ($width > $height) {
-            $thumbWidth = $thumbSize;
+            $thumbWidth = $thumbSize[0];
             $thumbHeight = $thumbWidth * $height / $width;
         } else {
-            $thumbHeight = $thumbSize;
+            $thumbHeight = $thumbSize[1];
             $thumbWidth = $thumbHeight * $width / $height;
         }
-        if ($thumbSize > $width && $thumbSize > $height) {
+        if ($thumbSize[0] > $width && $thumbSize[1] > $height) {
             $thumbWidth = $width;
             $thumbHeight = $height;
         }
