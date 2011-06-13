@@ -107,6 +107,50 @@ class Application_Form_Guestbook extends Zend_Form
                 ),
             )
         );
+        // Add [sup] button element
+        $this->addElement(
+            'button',
+            'sup',
+            array(
+                'label' => '[sup]',
+                'decorators' => array(
+                    'ViewHelper',
+                ),
+            )
+        );
+        // Add [sub] button element
+        $this->addElement(
+            'button',
+            'sub',
+            array(
+                'label' => '[sub]',
+                'decorators' => array(
+                    'ViewHelper',
+                ),
+            )
+        );
+        // Add [h1] button element
+        $this->addElement(
+            'button',
+            'h1',
+            array(
+                'label' => '[h1]',
+                'decorators' => array(
+                    'ViewHelper',
+                ),
+            )
+        );
+        // Add [img] button element
+        $this->addElement(
+            'button',
+            'img',
+            array(
+                'label' => '[img]',
+                'decorators' => array(
+                    'ViewHelper',
+                ),
+            )
+        );
         // Add all buttons to group to display them in one row
         $this->addDisplayGroup(
             array(
@@ -115,6 +159,10 @@ class Application_Form_Guestbook extends Zend_Form
                 'italic',
                 'strike',
                 'strong',
+                'sup',
+                'sub',
+                'h1',
+                'img',
             ),
             'submitButtons',
             array(
