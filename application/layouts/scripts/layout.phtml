@@ -4,7 +4,7 @@
     <?php echo $this->headMeta() ?>
     <?php echo $this->headLink() ?>
     <?php echo $this->headTitle() ?>
-    <?php echo $this->headLink()->appendStylesheet('css/picbox/picbox.css') ?>
+    <?php echo $this->headLink()->appendStylesheet($this->baseUrl() . '/css/picbox/picbox.css') ?>
 </head>
 <body>
     <header id="header">
@@ -19,8 +19,8 @@
         <p>&copy; <a href="http://loginwashere.pp.ua/">login.was.here</a> <?php echo date('Y') ?></p>
     </footer>
     <?php echo $this->inlineScript()
-                ->prependFile('js/picbox/picbox.js')
-                ->prependFile('js/main.js')
+                ->prependFile($this->baseUrl() . '/js/picbox/picbox.js')
+                ->prependFile($this->baseUrl() . '/js/main.js')
                 ->prependFile('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js') ?>
 </body>
 </html>
