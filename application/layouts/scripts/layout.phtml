@@ -20,6 +20,7 @@
     </footer>
     <?php echo $this->inlineScript()
                 ->prependFile($this->baseUrl() . '/js/picbox/picbox.js')
+                ->prependFile($this->baseUrl() . '/js/modernizr-1.7.min.js')
                 ->prependFile($this->baseUrl() . '/js/main.js')
                 ->prependFile('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js') ?>
 </body>

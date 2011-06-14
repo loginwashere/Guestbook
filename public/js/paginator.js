@@ -9,10 +9,10 @@ jQuery(function($){
     $('.paginationControl').find('a').live('click', function(){
         var href = this.href;
         var pos = this.rel == 'next' ? '-120%' : '120%';
-        /*
+        
         if (Modernizr.history) {
             history.pushState(location.pathname, '', href);
-        }*/
+        }
         container.find('#comments').animate({
             left: pos
         }, 'slow', function(){

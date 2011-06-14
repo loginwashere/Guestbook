@@ -12,8 +12,8 @@ class IndexController extends Zend_Controller_Action
                                    ->initContext();
         // Set max pages per page in guestbook
         $this->_maxCommentsPerPage = Zend_Registry::get('config')->guestbook
-                                                              ->global
-                                                              ->maxcommentsperpage;
+                                                                 ->global
+                                                                 ->maxcommentsperpage;
         /* Initialize action controller here */
         $this->_guestbook = new Application_Model_GuestbookMapper();
         $field = $this->_getParam('field');
@@ -40,64 +40,40 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // action body
         $this->view->form = $this->_form;
     }
 
     public function signAction()
     {
-        // action body
-        if ($this->_request->isXmlHttpRequest()) {
-            if ($this->getRequest()->isPost()) {
-                $request = $this->getRequest()->getPost();
-                if ($this->_form->isValid($request)) {
-                    $commentData['username'] = $this->_form->getValue('username');
-                    $commentData['email']    = $this->_form->getValue('email');
-                    $commentData['url']      = $this->_form->getValue('url');
-                    $bbcode = Zend_Markup::factory('Bbcode', 'Html');
-                    $commentData['comment']  = $bbcode->render($this->_form->getValue('comment'));
-                    $comment = new Application_Model_Guestbook($commentData);
-                    $imageData['commentid'] = $this->_guestbook->save($comment);
+        if ($this->getRequest()->isPost()) {
+            $request = $this->getRequest()->getPost();
+            if ($this->_form->isValid($request)) {
+                $commentData['username'] = $this->_form->getValue('username');
+                $commentData['email']    = $this->_form->getValue('email');
+                $commentData['url']      = $this->_form->getValue('url');
+                $bbcode = Zend_Markup::factory('Bbcode', 'Html');
+                $commentData['comment']  = $bbcode->render($this->_form->getValue('comment'));
+                $comment = new Application_Model_Guestbook($commentData);
+                $imageData['commentid'] = $this->_guestbook->save($comment);
 
-                    if ($this->_form->image->isUploaded()) {
-                        $image = new Application_Model_Images($imageData);
-                        $imageMapper = new Application_Model_ImagesMapper();
-                        $imageMapper->save($image);
-                    }
-                    $jsonData = Zend_Json::encode($myArray);
-                    //Send the result back to the client
-                    $this->response->appendBody($jsonData);
-                } else {
-                    $result = array('status'=>'error', 'data' => $this->_form->getErrors());
-                    $this->_json($result);
+                if ($this->_form->image->isUploaded()) {
+                    $image = new Application_Model_Images($imageData);
+                    $imageMapper = new Application_Model_ImagesMapper();
+                    $imageMapper->save($image);
                 }
-            }
-        } else {
-            if ($this->getRequest()->isPost()) {
-                $request = $this->getRequest()->getPost();
-                if ($this->_form->isValid($request)) {
-                    $commentData['username'] = $this->_form->getValue('username');
-                    $commentData['email']    = $this->_form->getValue('email');
-                    $commentData['url']      = $this->_form->getValue('url');
-                    $bbcode = Zend_Markup::factory('Bbcode', 'Html');
-                    $commentData['comment']  = $bbcode->render($this->_form->getValue('comment'));
-                    $comment = new Application_Model_Guestbook($commentData);
-                    $imageData['commentid'] = $this->_guestbook->save($comment);
+                $csrf = $this->_form->getElement("csrf");
+                $csrf->initCsrfToken();
+                $this->view->csrf = $csrf->getSession()->hash;
 
-                    if ($this->_form->image->isUploaded()) {
-                        $image = new Application_Model_Images($imageData);
-                        $imageMapper = new Application_Model_ImagesMapper();
-                        $imageMapper->save($image);
-                    }
-                    $this->_helper->redirector('index', 'index');
-                } else {
-                    $this->_form->populate($request);
-                }
-                $this->view->form = $this->_form;
-                $this->render('index');
+                $this->_helper->redirector('index', 'index');
+            } else {
+                $this->_form->populate($request);
             }
+            $this->view->form = $this->_form;
+            $this->render('index');
         }
     }
+
 
 
 }
