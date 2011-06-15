@@ -15,10 +15,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
              ->enable()
              ->setVersion('1');
 
-        $viewRenderer = new Zend_Controller_Action_Helper_ViewRenderer();
-        $viewRenderer->setView($view);
-        Zend_Controller_Action_HelperBroker::addHelper($viewRenderer);
-
         $view->doctype('HTML5');
 
         $view->headMeta()->setCharset('UTF-8');
@@ -41,6 +37,24 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         return $config;
     }
 
+    /**
+     * Enter description here ...
+     */
+    public function _initRoutes()
+    {
+        $frontController = Zend_Controller_Front::getInstance();
+        $router = $frontController->getRouter();
+        $route = new Zend_Controller_Router_Route(
+            'page/:page/',
+            array(
+                /*'page'       => 1,*/
+                'action'     => 'index',
+                'controller' => 'Index'
+            ),
+            array('page' => '\d+')
+        );
+        $router->addRoute('index', $route);
+    }
 
 
 }
