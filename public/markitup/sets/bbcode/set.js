@@ -20,7 +20,13 @@ mySettings = {
 		{name:'Link', key:'L', openWith:'[url=[![Url]!]]', closeWith:'[/url]', placeHolder:'Your text to link here...'},
 		{separator:'---------------' },
 		{name:'Quotes', openWith:'[cite]', closeWith:'[/cite]'},
-		{name:'Code', openWith:'[code]', closeWith:'[/code]'}, 
+		{name:'Code', openWith:'[pre]', closeWith:'[/pre]',
+			dropMenu :[
+			           {name:'PHP', openWith:'[pre class="brush: php;"]', closeWith:'[/pre]' },
+			           {name:'HTML', openWith:'[pre class="brush: html;"]', closeWith:'[/pre]' },
+			           {name:'CSS', openWith:'[pre class="brush: css;"]', closeWith:'[/pre]' }
+			           ]
+		}, 
 		{separator:'---------------' },
 		{name:'Clean', className:"clean", replaceWith:function(markitup) { return markitup.selection.replace(/\[(.*?)\]/g, "") } },
 		{name:'Preview', className:"preview", call:'preview' }
