@@ -9,8 +9,12 @@ class Application_Form_Guestbook extends Zend_Form
         // Set the method for the display form to POST
         $this->setMethod('post')
              ->setAction('/index/sign')
-             ->setEnctype(Zend_Form::ENCTYPE_MULTIPART);
-
+             ->setEnctype(Zend_Form::ENCTYPE_MULTIPART)
+             ->addPrefixPath(
+                 'LWH_Form_Decorator_Element',
+                 'LWH/Form/Decorator/Element',
+                 Zend_Form::DECORATOR
+             );
         // Add an username element
         $this->addElement(
             'text',
@@ -52,133 +56,6 @@ class Application_Form_Guestbook extends Zend_Form
             )
         );
 
-        // Add [link] button element
-        $this->addElement(
-            'button',
-            'link',
-            array(
-                'label' => '[link]',
-                'decorators' => array(
-                    'ViewHelper',
-                ),
-            )
-        );
-        // Add [code] button element
-        $this->addElement(
-            'button',
-            'code',
-            array(
-                'label' => '[code]',
-                'decorators' => array(
-                    'ViewHelper',
-                ),
-            )
-        );
-        // Add [italic] button element
-        $this->addElement(
-            'button',
-            'italic',
-            array(
-                'label' => '[italic]',
-                'decorators' => array(
-                    'ViewHelper',
-                ),
-            )
-        );
-        // Add [strike] button element
-        $this->addElement(
-            'button',
-            'strike',
-            array(
-                'label' => '[strike]',
-                'decorators' => array(
-                    'ViewHelper',
-                ),
-            )
-        );
-        // Add [strong] button element
-        $this->addElement(
-            'button',
-            'strong',
-            array(
-                'label' => '[strong]',
-                'decorators' => array(
-                    'ViewHelper',
-                ),
-            )
-        );
-        // Add [sup] button element
-        $this->addElement(
-            'button',
-            'sup',
-            array(
-                'label' => '[sup]',
-                'decorators' => array(
-                    'ViewHelper',
-                ),
-            )
-        );
-        // Add [sub] button element
-        $this->addElement(
-            'button',
-            'sub',
-            array(
-                'label' => '[sub]',
-                'decorators' => array(
-                    'ViewHelper',
-                ),
-            )
-        );
-        // Add [h1] button element
-        $this->addElement(
-            'button',
-            'h1',
-            array(
-                'label' => '[h1]',
-                'decorators' => array(
-                    'ViewHelper',
-                ),
-            )
-        );
-        // Add [img] button element
-        $this->addElement(
-            'button',
-            'img',
-            array(
-                'label' => '[img]',
-                'decorators' => array(
-                    'ViewHelper',
-                ),
-            )
-        );
-        // Add all buttons to group to display them in one row
-        $this->addDisplayGroup(
-            array(
-                'link',
-                'code',
-                'italic',
-                'strike',
-                'strong',
-                'sup',
-                'sub',
-                'h1',
-                'img',
-            ),
-            'submitButtons',
-            array(
-                'decorators' => array(
-                    'FormElements',
-                    array(
-                        'HtmlTag',
-                        array(
-                            'tag' => 'div',
-                            'class' => 'element'
-                        )
-                    ),
-                ),
-            )
-        );
-
         // Add the comment element
         $this->addElement(
             'textarea',
@@ -198,6 +75,8 @@ class Application_Form_Guestbook extends Zend_Form
                 )
             )
         );
+        // Add Markitup decorator to textarea
+        $this->getElement('comment')->addDecorator('Markitup');
 
         // Image upload
         // Add a image uploading field

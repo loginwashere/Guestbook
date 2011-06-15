@@ -52,7 +52,7 @@ form {
 #username, #comment, #email, #url, #image, div#recaptcha-widget-div {
     float: left;
 }
-#username-label, #comment-label, #email-label, #url-label, #image-label, #recaptcha-label, .element, #footer {
+#username-label, #comment-label, #email-label, #url-label, #image-label, #recaptcha-label, .element, #footer, .markItUpFooter {
     clear: left;
 }
 #comments {

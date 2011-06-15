@@ -10,6 +10,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $this->bootstrap('view');
         $view = $this->getResource('view');
 
+        $view->addHelperPath('ZendX/JQuery/View/Helper/', 'ZendX_JQuery_View_Helper');
+        $view->jQuery()
+             ->enable()
+             ->setVersion('1');
+
         $view->doctype('HTML5');
 
         $view->headMeta()->setCharset('UTF-8');
@@ -19,7 +24,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
              ->setSeparator(' :: ');
 
         // Set the initial stylesheet:
-        $view->headLink()->prependStylesheet('/css/global.css');
+        $view->headLink()->prependStylesheet($view->baseUrl() . '/css/global.css');
 
         //set page title;
         $view->title = "Don't panic";
