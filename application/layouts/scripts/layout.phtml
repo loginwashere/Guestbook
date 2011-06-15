@@ -20,8 +20,9 @@
     <?php echo $this->jQuery(); ?>
     <?php echo $this->headScript()
                 ->prependFile($this->baseUrl() . '/js/modernizr-1.7.min.js')
+                ->prependFile('http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.min.js')
                 ->appendFile($this->baseUrl() . '/shadowbox/shadowbox.js')
-                //->prependFile($this->baseUrl() . '/js/main.js')
+                ->appendFile($this->baseUrl() . '/js/main.js')
     ?>
     <script type="text/javascript">
     Shadowbox.init();

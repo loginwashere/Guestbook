@@ -10,6 +10,7 @@ class Application_Form_Guestbook extends Zend_Form
         $this->setMethod('post')
              ->setAction('/index/sign')
              ->setEnctype(Zend_Form::ENCTYPE_MULTIPART)
+             ->setAttrib('id', 'commentForm')
              ->addPrefixPath(
                  'LWH_Form_Decorator_Element',
                  'LWH/Form/Decorator/Element',
