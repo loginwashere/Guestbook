@@ -10,10 +10,10 @@
 <?php foreach ($this->paginator as $entry): ?>
     <li class="comment-main">
         <div class="comment-header">
-            <?php echo $this->escape($entry['entry']->created) ?>
-            <strong><?php echo $this->escape($entry['entry']->email) ?></strong>
-            <?php echo $this->escape($entry['entry']->username) ?>
-            <?php echo $this->escape($entry['entry']->url) ?>
+            <span><?php echo $this->escape($entry['entry']->created) ?></span>
+            <span><strong><?php echo $this->escape($entry['entry']->email) ?></strong></span>
+            <span><?php echo $this->escape($entry['entry']->username) ?></span>
+            <span><?php echo $this->escape($entry['entry']->url) ?></span>
             <span class="number">№<?php echo $this->escape($entry['entry']->gid) ?></span>
         </div>
         <?php if ('' !== $entry['image']->filename): ?>
@@ -26,9 +26,7 @@
                 height="<?php echo $this->escape($entry['image']->resizedheight) ?>"
             /></a>
         <?php endif;?>
-        <div class="comment-text">
-            <?php echo $entry['entry']->comment ?>
-        </div>
+        <div class="comment-text"><?php echo $entry['entry']->comment ?></div>
     </li>
     <?php endforeach ?>
 </ul>

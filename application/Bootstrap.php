@@ -15,6 +15,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
              ->enable()
              ->setVersion('1');
 
+        $viewRenderer = new Zend_Controller_Action_Helper_ViewRenderer();
+        $viewRenderer->setView($view);
+        Zend_Controller_Action_HelperBroker::addHelper($viewRenderer);
+
         $view->doctype('HTML5');
 
         $view->headMeta()->setCharset('UTF-8');
