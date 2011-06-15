@@ -141,22 +141,6 @@ div.comment-text {
     background-color: #fff;
     opacity: .8;
 }
-/**
- * Form Validation
- */
-.ui-validation-error-message { 
-    color: #ff0000; 
-}
-.ui-validation-error { 
-    border: 1px solid #ff0000; 
-    background: #fff0f0; 
-}
-.ui-validation-completion {
-    width: 32px; 
-    height: 32px; 
-    position: absolute; 
-    margin: -6px 0 0 -32px; 
-}
-.ui-validation-complete { 
-    background-image: url("images/check.png"); 
+.syntaxhighlighter {
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }
