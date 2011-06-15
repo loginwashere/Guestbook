@@ -187,6 +187,8 @@ class Application_Form_Guestbook extends Zend_Form
                 'label'      => 'Please Comment:',
                 'required'   => true,
                 'class'      => 'required',
+                'cols'       => 50,
+                'rows'       => 10,
                 'filters'    => array('StringTrim'),
                 'validators' => array(
                     array(

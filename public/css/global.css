@@ -43,7 +43,18 @@ form {
     margin: 0 auto;
     padding: 5px;
 }
+.errors{
+    float: left;
+    color: #f00;
+    list-style: none;
+}
 
+#username, #comment, #email, #url, #image, div#recaptcha-widget-div {
+    float: left;
+}
+#username-label, #comment-label, #email-label, #url-label, #image-label, #recaptcha-label, .element, #footer {
+    clear: left;
+}
 #comments {
     list-style: none;
 }
