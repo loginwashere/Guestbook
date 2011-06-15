@@ -26,7 +26,7 @@ mySettings = {
 			           {name:'HTML', openWith:'[pre class="brush: html;"]', closeWith:'[/pre]' },
 			           {name:'CSS', openWith:'[pre class="brush: css;"]', closeWith:'[/pre]' }
 			           ]
-		}, 
+		},
 		{separator:'---------------' },
 		{name:'Clean', className:"clean", replaceWith:function(markitup) { return markitup.selection.replace(/\[(.*?)\]/g, "") } },
 		{name:'Preview', className:"preview", call:'preview' }
