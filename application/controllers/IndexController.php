@@ -46,6 +46,15 @@ class IndexController extends Zend_Controller_Action
                 $commentData['email']    = $this->_form->getValue('email');
                 $commentData['url']      = $this->_form->getValue('url');
                 $bbcode = Zend_Markup::factory('Bbcode', 'Html');
+                $bbcode->addMarkup(
+                    'pre',
+                    Zend_Markup_Renderer_RendererAbstract::TYPE_REPLACE,
+                    array(
+                        'start' => '<pre class="brush: php;">',
+                        'end'   => '</pre>',
+                        'group' => 'inline'
+                    )
+                );
                 $commentData['comment']  = $bbcode->render($this->_form->getValue('comment'));
                 $comment = new Application_Model_Guestbook($commentData);
                 $imageData['commentid'] = $this->_guestbook->save($comment);

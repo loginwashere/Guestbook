@@ -2,7 +2,11 @@
 <html>
 <head>
     <?php echo $this->headMeta() ?>
-    <?php echo $this->headLink()->appendStylesheet('/shadowbox/shadowbox.css') ?>
+    <?php echo $this->headLink()
+                    ->appendStylesheet($this->baseUrl() . '/shadowbox/shadowbox.css')
+                    ->appendStylesheet($this->baseUrl() . '/syntaxhighlight/styles/shCore.css')
+                    ->appendStylesheet($this->baseUrl() . '/syntaxhighlight/styles/shThemeDefault.css')
+    ?>
     <?php echo $this->headTitle() ?>
 </head>
 <body>
@@ -23,9 +27,15 @@
                 ->prependFile('http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.min.js')
                 ->appendFile($this->baseUrl() . '/shadowbox/shadowbox.js')
                 ->appendFile($this->baseUrl() . '/js/main.js')
+                ->appendFile($this->baseUrl() . '/syntaxhighlight/scripts/shCore.js')
+                ->appendFile($this->baseUrl() . '/syntaxhighlight/scripts/shBrushPhp.js')
     ?>
     <script type="text/javascript">
-    Shadowbox.init();
+        Shadowbox.init();
+    </script>
+    <script type="text/javascript">
+        SyntaxHighlighter.config.stripBrs = true;
+        SyntaxHighlighter.all();
     </script>
 </body>
 </html>
