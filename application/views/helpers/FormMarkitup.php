@@ -17,19 +17,13 @@ class Zend_View_Helper_FormMarkitup extends Zend_View_Helper_Abstract
 
         $view = $this->view;
 
-        //Включаем jQuery хелпер, для этого
-        //должно быть активирована библиотека ZendX
-        /*$view->jQuery()
-             ->enable()
-             ->setVersion('1.5');*/
-
         //Подключаем нужные нам стили
-        $view->jQuery()
-             ->addJavascriptFile($view->baseUrl('/markitup/jquery.markitup.js'))
-             ->addJavascriptFile($view->baseUrl('/markitup/sets/bbcode/set.js'))
-             ->addStylesheet($view->baseUrl('/markitup/skins/simple/style.css'))
-             ->addStylesheet($view->baseUrl('/markitup/sets/bbcode/style.css'));
+        $view->headLink()->appendStylesheet($view->baseUrl() . '/markitup/skins/simple/style.css')
+                         ->appendStylesheet($view->baseUrl() . '/markitup/sets/bbcode/style.css');
 
+        $view->headScript()
+             ->appendFile($view->baseUrl() . '/markitup/jquery.markitup.js')
+             ->appendFile($view->baseUrl() . '/markitup/sets/bbcode/set.js');
          $id = $attribs['id'];
          $js = 'jQuery("#'.$id.'").markItUp(mySettings)';
          $this->view->jQuery()->addOnLoad($js);

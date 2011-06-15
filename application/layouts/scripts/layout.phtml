@@ -18,8 +18,8 @@
         <p>&copy; <a href="http://loginwashere.pp.ua/">login.was.here</a> <?php echo date('Y') ?></p>
     </footer>
     <?php echo $this->jQuery(); ?>
-    <?php echo $this->inlineScript()
-                ->appendFile($this->baseUrl() . '/js/modernizr-1.7.min.js')
+    <?php echo $this->headScript()
+                ->prependFile($this->baseUrl() . '/js/modernizr-1.7.min.js')
                 ->appendFile($this->baseUrl() . '/shadowbox/shadowbox.js')
                 //->prependFile($this->baseUrl() . '/js/main.js')
     ?>
