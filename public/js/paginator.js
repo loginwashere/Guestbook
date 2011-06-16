@@ -1,9 +1,7 @@
 /**
  * 
  */
-jQuery(function($){
-	Shadowbox.init();
-	
+jQuery(function($){	
     var container = $('#paged-data-container');
     
     var overlay = $('<div>').addClass('loading overlay');
