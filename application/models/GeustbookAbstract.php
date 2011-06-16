@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * @author Savchenko Dmitry <login.was.here@gmail.com>
+ * @license http://www.opensource.org/licenses/mit-license.php
+ * @package guestbook
+ */
 class Application_Model_GeustbookAbstract
 {
     public function __construct(array $options = null)

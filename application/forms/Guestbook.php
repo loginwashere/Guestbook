@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * @author Savchenko Dmitry <login.was.here@gmail.com>
+ * @license http://www.opensource.org/licenses/mit-license.php
+ * @package guestbook
+ */
 class Application_Form_Guestbook extends Zend_Form
 {
 

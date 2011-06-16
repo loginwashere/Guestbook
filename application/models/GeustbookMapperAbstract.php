@@ -1,5 +1,14 @@
 <?php
-
+/**
+ * @author Savchenko Dmitry <login.was.here@gmail.com>
+ * @license http://www.opensource.org/licenses/mit-license.php
+ * @package guestbook
+ */
+/**
+ * @author Savchenko Dmitry <login.was.here@gmail.com>
+ * @license http://www.opensource.org/licenses/mit-license.php
+ * @package guestbook
+ */
 class Application_Model_GeustbookMapperAbstract
 {
     protected $_dbTable;

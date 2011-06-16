@@ -1,4 +1,9 @@
 <?php
+/**
+ * @author Savchenko Dmitry <login.was.here@gmail.com>
+ * @license http://www.opensource.org/licenses/mit-license.php
+ * @package guestbook
+ */
 class Zend_View_Helper_FormMarkitup extends Zend_View_Helper_Abstract
 {
 
